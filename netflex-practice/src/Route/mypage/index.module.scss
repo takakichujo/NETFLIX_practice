@@ -1,0 +1,49 @@
+.mypageContent {
+  width: 1300px;
+  background-color: white;
+  height: 700px;
+  text-align: center;
+}
+.Top {
+  display: flex;
+  margin: 0 auto;
+  width: 800px;
+  height: 100px;
+  border-bottom: 1px solid gray;
+  &Account {
+    color: black;
+    padding-top: 30px;
+  }
+  &Register {
+    text-align: left;
+    color: black;
+    padding-top: 30px;
+  }
+
+  &Register {
+    color: black;
+    padding: 40px 0 0 30px;
+  }
+}
+.Membership {
+  display: flex;
+  margin: 0 auto;
+  width: 800px;
+  height: 120px;
+  border-bottom: 1px solid gray;
+  align-items: center;
+  &TopText {
+    color: gray;
+  }
+  &TopText {
+    margin-right: 200px;
+    width: 220px;
+  }
+  &Content {
+    color: gray;
+  }
+  &Logout {
+    color: black;
+    margin: 0 auto;
+  }
+}
