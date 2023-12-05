@@ -6,10 +6,9 @@ export const Mypage: FC = () => {
   const navigate = useNavigate();
   return (
     <div>
-      {/* <Nav>こんにちは、userさん</Nav> */}
       <div className={`${styles.mypageContent}`}>
         <div className={`${styles.Top}`}>
-          <h2 className={`${styles.TopAccount}`}>アカウント</h2>
+          <h1 className={`${styles.TopAccount}`}>アカウント</h1>
           <p className={`${styles.TopRegister}`}>
             メンバー登録年月日：2023年11月29日
           </p>
@@ -43,9 +42,9 @@ export const Mypage: FC = () => {
             </p>
           </div>
         </div>
-        <div className={`${styles.Membership}`}>
+        <div className={styles.Membership}>
           <p
-            className={`${styles.MembershipLogout}`}
+            className={styles.MembershipLogout}
             onClick={() => {
               navigate('/Login');
             }}

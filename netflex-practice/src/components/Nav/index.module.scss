@@ -1,4 +1,4 @@
-.Nav {
+.nav {
   position: fixed;
   top: 0;
   left: 0;
@@ -23,7 +23,11 @@
     width: 80px;
     object-fit: contain;
   }
-
+  &Mypage {
+    position: fixed;
+    left: 120px;
+    top: 0;
+  }
   &Avater {
     position: fixed;
     right: 30px;
@@ -31,9 +35,21 @@
     object-fit: contain;
   }
 }
-.Mypage {
-  position: fixed;
-  top: 0;
-  left: 130px;
-  object-fit: contain;
+@media screen and (max-width: 480px) {
+  .nav {
+    height: 50px;
+    width: 100%;
+    &Logo {
+      width: 120px;
+    }
+    &Avater {
+      width: 40px;
+    }
+    &Mypage {
+      position: fixed;
+      left: 200px;
+      top: 0;
+      font-size: 17px;
+    }
+  }
 }

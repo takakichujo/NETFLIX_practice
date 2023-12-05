@@ -1,19 +1,21 @@
 import axios, { AxiosResponse } from 'axios';
 import useSWR from 'swr';
+import { API_KEY } from '../request';
 type FetcherResponse = {
-  results: Movie[];
-};
-type Movie = {
-  id: string;
-  name: string;
   original_name: string;
-  poster_path: string;
   backdrop_path: string;
-  total_pages: number;
+  first_air_date: string;
+  homepage: string;
+  genres: genres[];
+  overview: string;
 };
-
-export const useDataFetching = (url: string) => {
-  const fetcher = async (url: string): Promise<FetcherResponse> => {
+type genres = {
+  id: number;
+  name: string;
+};
+export const useMovieFetching = (movieId: string) => {
+  const url = `https://api.themoviedb.org/3/tv/${movieId}?api_key=${API_KEY}&language=en-us`;
+  const fetcher = async (): Promise<FetcherResponse> => {
     try {
       const response: AxiosResponse<FetcherResponse> = await axios.get(url);
       return response.data;
@@ -24,7 +26,7 @@ export const useDataFetching = (url: string) => {
   };
   const { data, error } = useSWR<FetcherResponse>(url, fetcher);
   return {
-    data: data?.results,
+    data: data,
     isLoading: !error && !data,
     isError: error,
   };

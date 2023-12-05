@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import useSWR from 'swr';
 import { API_KEY } from '../request';
 import { BASE_API } from '../request';
-type Options = {
+type movieData = {
   height: string;
   width: string;
   playerVars: {
@@ -11,7 +11,7 @@ type Options = {
   key: string;
 };
 type FetcherResponse = {
-  results: Options[];
+  results: movieData[];
 };
 export const Trailer = (movieId: string) => {
   const url = `${BASE_API}/tv/${movieId}/videos?api_key=${API_KEY}`;

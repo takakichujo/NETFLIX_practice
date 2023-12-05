@@ -1,19 +1,22 @@
-import { FC, ReactNode } from 'react';
+import { FC } from 'react';
 import { useState, useEffect } from 'react';
 import styles from './index.module.scss';
 import { NavModal } from '../NavModal';
-type Props = {
-  className?: string;
-  children?: ReactNode;
-};
+import { useNavigate } from 'react-router-dom';
 
-export const Nav: FC<Props> = (props: Props) => {
+export const Nav: FC = () => {
+  const navigate = useNavigate();
   const [isModal, setIsModal] = useState(false);
-
   const handleModal = () => {
     setIsModal((prevOnModal) => !prevOnModal);
   };
-
+  const handleMypage = () => {
+    if (isModal) navigate('/Home/Mypage');
+    setIsModal(false);
+  };
+  const homeHandle = () => {
+    navigate('/Home');
+  };
   const [show, setShow] = useState(false);
   useEffect(() => {
     const handleShow = () => {
@@ -29,20 +32,21 @@ export const Nav: FC<Props> = (props: Props) => {
     };
   }, [show]);
   return (
-    <div className={`${styles.Nav} ${show && styles.NavBlack}`}>
+    <div className={`${styles.nav} ${show && styles.navBlack}`}>
       <img
-        className={`${styles.NavLogo}`}
+        className={styles.navLogo}
         src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/1920px-Netflix_2015_logo.svg.png'
         alt='Netflix Logo'
+        onClick={homeHandle}
       />
-      <p className={`${styles.Mypage}`}>{props.children}</p>
+      <p className={styles.navMypage}>こんにちはuserさん</p>
       <img
-        className={`${styles.NavAvater}`}
+        className={styles.navAvater}
         src='https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png'
         alt='Avatar'
         onClick={handleModal}
       />
-      {isModal && <NavModal />}
+      {isModal && <NavModal onClick={handleMypage} />}
     </div>
   );
 };

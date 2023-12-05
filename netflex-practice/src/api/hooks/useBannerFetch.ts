@@ -13,9 +13,6 @@ type FetcherResponse = {
   results: MovieProps[];
   url: string;
 };
-type TruncateFunction = {
-  truncate: (str: string | undefined, n: number) => string | undefined;
-};
 
 export const useBannerFetching = (url: string) => {
   const fetcher = async (url: string): Promise<FetcherResponse> => {
@@ -29,26 +26,15 @@ export const useBannerFetching = (url: string) => {
   };
 
   const { data, error } = useSWR<FetcherResponse>(url, fetcher);
-  if (data) {
-    const dataResults = data.results;
-    if (dataResults && dataResults.length > 0) {
-      const dataRandom =
-        dataResults[Math.floor(Math.random() * dataResults.length)];
-      return {
-        data: dataRandom,
-        isLoading: !error && !data,
-        isError: error,
-      };
-    }
-  }
+
+  const dataRandom =
+    data && data.results && data.results.length > 0
+      ? data.results[Math.floor(Math.random() * data.results.length)]
+      : null;
+
   return {
+    data: dataRandom,
     isLoading: !error && !data,
     isError: error,
   };
-};
-export const truncate: TruncateFunction['truncate'] = (str, n) => {
-  if (str !== undefined) {
-    return str.length > n ? str.substring(0, n - 1) + '...' : str;
-  }
-  return str;
 };

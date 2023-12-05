@@ -1,5 +1,6 @@
 import { FC } from 'react';
-import { useBannerFetching, truncate } from '../../api/hooks/useBannerFetch';
+import { useBannerFetching } from '../../api/hooks/useBannerFetch';
+import { truncate } from '../../utils/helper';
 import styles from './index.module.scss';
 type BannerUrlProps = {
   apiUrl: string;
@@ -16,24 +17,24 @@ export const Banner: FC<BannerUrlProps> = ({ apiUrl }) => {
     <header
       className={`${styles.Banner}`}
       style={{
-        backgroundSize: 'cover',
         backgroundImage: `url("https://image.tmdb.org/t/p/original${data?.backdrop_path}")`,
-        backgroundPosition: 'center center',
       }}
     >
-      <div className={`${styles.BannerContent}`}>
-        <h1 className={`${styles.BannerTitle}`}>
-          {data?.title || data?.name || data?.original_name}
-        </h1>
-        <div className={`${styles.BannerButtons}`}>
-          <button className={`${styles.BannerButton}`}>Play</button>
-          <button className={`${styles.BannerButton}`}>My List</button>
+      {data ? (
+        <div className={styles.BannerContent}>
+          <h1 className={styles.BannerTitle}>
+            {data.title || data.name || data.original_name}
+          </h1>
+          <div className={styles.BannerButtons}>
+            <button className={styles.BannerButton}>Play</button>
+            <button className={styles.BannerButton}>My List</button>
+          </div>
+          <h1 className={styles.BannerDescription}>
+            {truncate(data.overview, 150)}
+          </h1>
         </div>
-        <h1 className={`${styles.BannerDescription}`}>
-          {truncate(data?.overview, 150)}
-        </h1>
-      </div>
-      <div className={`${styles.BannerFadeBottom}`}></div>
+      ) : null}
+      <div className={styles.BannerFadeBottom}></div>
     </header>
   );
 };

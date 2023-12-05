@@ -1,9 +1,8 @@
 .modalContent {
-  text-align: center;
-  width: 160px;
+  position: fixed;
+  right: 70px;
   background-color: black;
   height: 150px;
-  margin: 40px 0 0 1200px;
   :hover {
     cursor: pointer;
     color: blue;

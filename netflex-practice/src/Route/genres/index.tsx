@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { useGenresFetching } from '../../api/hooks/useGenresFetching';
-import styles from './style.module.scss';
+import styles from './index.module.scss';
 export const Genres: FC = () => {
   const { data, isLoading, isError } = useGenresFetching();
   if (isLoading) {

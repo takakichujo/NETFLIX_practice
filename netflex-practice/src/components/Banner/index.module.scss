@@ -2,6 +2,9 @@
   color: #fff;
   object-fit: contain;
   height: 448px;
+  background-size: 'cover';
+
+  background-position: 'center center';
   &Content {
     margin-left: 30px;
     padding-top: 140px;
