@@ -11,8 +11,8 @@ export const Nav: FC = () => {
     setIsModal((prevOnModal) => !prevOnModal);
   };
   const handleMypage = () => {
-    if (isModal) navigate('/Home/Mypage');
     setIsModal(false);
+    navigate('/Home/Mypage');
   };
   const homeHandle = () => {
     navigate('/Home');
@@ -46,7 +46,7 @@ export const Nav: FC = () => {
         alt='Avatar'
         onClick={handleModal}
       />
-      {isModal && <NavModal onClick={handleMypage} />}
+      {isModal && <NavModal handleMypage={handleMypage} />}
     </div>
   );
 };
