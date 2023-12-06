@@ -1,0 +1,14 @@
+.Login {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  &Label {
+    margin: 30px;
+  }
+  &Error {
+    color: red;
+  }
+  &Submit {
+    margin-top: 50px;
+  }
+}

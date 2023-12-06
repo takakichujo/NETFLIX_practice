@@ -1,0 +1,27 @@
+.genre {
+  display: flex;
+  justify-content: center;
+  &Content {
+    margin-right: 30px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .firstDate {
+    font-size: 30px;
+  }
+  .detail {
+    font-size: 30px;
+  }
+  .overview {
+    font-size: 40px;
+  }
+  .genre {
+    font-size: 40px;
+    &Top {
+      font-size: 40px;
+    }
+    &Homepage {
+      font-size: 30px;
+    }
+  }
+}

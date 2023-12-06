@@ -1,0 +1,10 @@
+.modalContent {
+  position: fixed;
+  right: 70px;
+  background-color: black;
+  height: 150px;
+  :hover {
+    cursor: pointer;
+    color: blue;
+  }
+}
