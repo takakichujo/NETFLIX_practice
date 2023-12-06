@@ -105,7 +105,7 @@ export const Login: FC = () => {
     </form>
   );
 };
-
+//reactUseFormを使わないパターンで書いた為、残しています。
 // import { FC } from 'react';
 // // import { useForm, SubmitHandler } from 'react-hook-form';
 // import { useNavigate } from 'react-router-dom';
